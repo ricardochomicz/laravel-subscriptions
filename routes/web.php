@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Subscriptions\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('subscriptions/checkout', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+Route::get('subscriptions/premium', [SubscriptionController::class, 'premium'])->name('subscriptions.premium');
 
 Route::get('/', function () {
     return view('welcome');
