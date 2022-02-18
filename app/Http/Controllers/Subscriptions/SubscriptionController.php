@@ -13,7 +13,9 @@ class SubscriptionController extends Controller
 
     public function index()
     {
-        return view('subscriptions.index');
+        return view('subscriptions.index',[
+            'intent' => auth()->user()->createSetupIntent()
+        ]);
     }
 
     public function store(Request $request)
@@ -22,7 +24,7 @@ class SubscriptionController extends Controller
             ->newSubscription('default', 'price_1KUWGND1a7olz7DGBh7DvZ60')
             ->create($request->token);
 
-            return redirect()->route('subscrptions.premium');
+            return redirect()->route('subscriptions.premium');
     }
 
     public function premium()
